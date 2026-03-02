@@ -20,8 +20,8 @@ RUN corepack enable
 
 WORKDIR /openclaw
 
-# Pin to a known ref (tag/branch). If it doesn't exist, fall back to main.
-ARG OPENCLAW_GIT_REF=main
+# Pin to a known-good version. Override via Railway build variable to upgrade.
+ARG OPENCLAW_GIT_REF=v2026.3.1
 RUN git clone --depth 1 --branch "${OPENCLAW_GIT_REF}" https://github.com/openclaw/openclaw.git .
 
 # Patch: relax version requirements for packages that may reference unpublished versions.
