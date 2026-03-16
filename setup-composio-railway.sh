@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -euo pipefail
 
 # Required: COMPOSIO_KEY must be provided in Railway env (or via COMPOSIO_CONSUMER_KEY)
