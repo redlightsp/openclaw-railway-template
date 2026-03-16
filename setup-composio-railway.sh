@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 set -euo pipefail
 
 # Required: COMPOSIO_KEY must be provided in Railway env (or via COMPOSIO_CONSUMER_KEY)
 COMPOSIO_KEY="${COMPOSIO_KEY:-}"
 if [ -z "$COMPOSIO_KEY" ]; then
-  echo "ERROR: COMPOSIO_KEY is not set in the environment." >&2
-  exit 1
+  echo "WARNING: COMPOSIO_KEY is not set — skipping Composio setup. Set it in Railway Variables to enable." >&2
+  exit 0
 fi
 
 echo "Starting Composio wiring (Railway one-shot)..."
@@ -25,11 +25,7 @@ openclaw config --help >/dev/null 2>&1 && echo "OpenClaw CLI available" || echo 
 # 4) Step 2 completion note
 echo "Step 2 (calendar unification via Composio wiring) presumed configured. If Gmail/Outlook connections exist in Composio dashboard, calendars can be merged."
 
-# 5) Optional: Step 3 morning briefing trigger (best-effort)
-echo "Attempting Morning Briefing trigger (non-interactive)."
-openclaw run --command "Give me my morning briefing" || true
-
-# 6) Step 4 email workflow sanity check
+# 5) Step 4 email workflow sanity check
 echo "Proceed to Step 4 checks manually if needed: surface priority emails, test draft save, test unsubscribe."
 
 echo "Done. Ensure the Composio dashboard has Gmail/Outlook calendars connected and permissions granted."
