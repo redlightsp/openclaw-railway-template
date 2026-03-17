@@ -70,6 +70,10 @@ USER root
 RUN chown -R root:root /home/linuxbrew/.linuxbrew
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
+# Install Composio CLI
+RUN curl -fsSL https://composio.dev/install | bash
+ENV PATH="/root/.composio/bin:${PATH}"
+
 WORKDIR /app
 
 # Wrapper deps
