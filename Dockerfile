@@ -71,7 +71,9 @@ RUN chown -R root:root /home/linuxbrew/.linuxbrew
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}"
 
 # Install Composio CLI via pip
-RUN pip3 install composio-core
+RUN apt-get update && apt-get install -y --no-install-recommends python3-pip \
+  && rm -rf /var/lib/apt/lists/* \
+  && pip3 install composio-core --break-system-packages
 
 
 WORKDIR /app
