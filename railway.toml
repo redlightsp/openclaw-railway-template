@@ -5,7 +5,7 @@ builder = "dockerfile"
 healthcheckPath = "/setup/healthz"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
-startCommand = "bash /app/setup-composio-railway.sh; echo '=== STARTING NODE ==='; node src/server.js 2>&1"
+startCommand = "bash /app/start.sh"
 
 [variables]
 PORT = "8080"
