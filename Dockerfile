@@ -94,5 +94,7 @@ COPY src ./src
 COPY setup-composio-railway.sh ./
 
 ENV PORT=8080
+COPY start.sh ./
+RUN chmod +x /app/start.sh
 EXPOSE 8080
 CMD ["node", "src/server.js"]
