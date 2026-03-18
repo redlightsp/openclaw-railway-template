@@ -8,12 +8,7 @@ if [ -z "$COMPOSIO_KEY" ]; then
 fi
 
 echo "Starting Composio setup..."
-
-# Set API key as environment variable (no interactive login needed)
 export COMPOSIO_API_KEY="$COMPOSIO_KEY"
-
-# Verify Composio is installed and accessible
-composio whoami 2>&1 | grep -v "API Key" && echo "Composio authenticated successfully." || echo "WARNING: Composio auth check failed."
-
-echo "Done. Connect Gmail/Google Calendar at https://app.composio.dev"
+echo "Composio API key set successfully."
+echo "Done."
 exit 0
