@@ -13,7 +13,7 @@ echo "Starting Composio setup..."
 export COMPOSIO_API_KEY="$COMPOSIO_KEY"
 
 # Verify Composio is installed and accessible
-composio whoami && echo "Composio authenticated successfully." || echo "WARNING: Composio auth check failed."
+composio whoami 2>&1 | grep -v "API Key" && echo "Composio authenticated successfully." || echo "WARNING: Composio auth check failed."
 
 echo "Done. Connect Gmail/Google Calendar at https://app.composio.dev"
 exit 0
