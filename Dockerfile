@@ -91,7 +91,13 @@ RUN printf '%s\n' '#!/usr/bin/env bash' 'exec node /openclaw/dist/entry.js "$@"'
   && chmod +x /usr/local/bin/openclaw
 
 COPY src ./src
-COPY setup-composio-railway.sh ./
+
+# Add Composio setup
+COPY setup-composio.sh /workspace/setup-composio.sh
+RUN chmod +x /workspace/setup-composio.sh
+
+# Run Composio setup during build or startup
+RUN /workspace/setup-composio.sh || true
 
 ENV PORT=8080
 COPY start.sh ./
